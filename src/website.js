@@ -1,3 +1,4 @@
+import loadContact from "./contact";
 import loadHome from "./home";
 import loadMenu from "./menu";
 
@@ -20,15 +21,34 @@ function createNav() {
 
     const homeButton = document.createElement('button');
     homeButton.classList.add('button-nav');
-    homeButton.textContent = "Inicio";
+    homeButton.textContent = 'Inicio';
     homeButton.addEventListener('click', (e) => {
         if (e.target.classList.contains('active')) return;
         setActiveButton(homeButton);
         loadHome();
     });
 
+    const menuButton = document.createElement('button');
+    menuButton.classList.add('button-nav');
+    menuButton.textContent = 'Menu';
+    menuButton.addEventListener('click', (e) => {
+        if (e.target.classList.contains('active')) return;
+        setActiveButton(menuButton);
+        loadMenu();
+    })
+
+    const contactButton = document.createElement('button');
+    contactButton.classList.add('button-nav');
+    contactButton.textContent = 'Contacto';
+    contactButton.addEventListener('click', (e) => {
+        if (e.target.classList.contains('active')) return;
+        setActiveButton(contactButton);
+        loadContact();
+    }) 
 
     nav.appendChild(homeButton);
+    nav.appendChild(menuButton);
+    nav.appendChild(contactButton);
     
     return nav;
 }
@@ -71,7 +91,7 @@ function createFooter() {
 function loadWebsite() {
     const content = document.getElementById('content');
 
-    content.appendChild(CreateHeader());
+    content.appendChild(createHeader());
     content.appendChild(createMain());
     content.appendChild(createFooter());
 
